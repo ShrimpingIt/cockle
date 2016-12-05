@@ -59,5 +59,4 @@ def accept_handler(sock):
 	finally:
 		client_s.close()
 
-while True:
-	accept_handler(s)
+s.setsockopt(socket.SOL_SOCKET, 20, accept_handler)
