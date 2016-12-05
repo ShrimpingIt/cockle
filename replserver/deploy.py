@@ -9,7 +9,7 @@ try:
 	zippedPath = 'webrepl-inlined.html.gz'
 
 	putTemplate = Template("ampy --port ${port} put ${frompath} ${topath}")
-
+	resetTemplate = Template("ampy --port ${port} reset")
 
 	try:
 		print('Uploading the gzipped webrepl')
@@ -28,6 +28,15 @@ try:
 			port=port,
 			frompath=mainPath,
 			topath=mainPath
+		).split()
+		cli.cli()
+	except SystemExit:
+		pass
+
+	try:
+		print('Resetting Cockle')
+		sys.argv = resetTemplate.substitute(
+			port=port
 		).split()
 		cli.cli()
 	except SystemExit:
