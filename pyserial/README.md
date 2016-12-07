@@ -1,0 +1,1 @@
+The miniterm.py version in this repo was snapshotted from https://github.com/pyserial/pyserial/commit/cab3dabc81ecbf010d81ff38433db99c1f6d667c following a patch arising from the bug report at https://github.com/pyserial/pyserial/issues/174  as a temporary measure before the fix makes it into the latest pip version.
