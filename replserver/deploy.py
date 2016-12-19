@@ -5,7 +5,7 @@ from ampy import pyboard, cli
 try:
 	port = "/dev/ttyUSB0"
 
-	mainPath = 'main.py'
+	bootPath = 'boot.py'
 	zippedPath = 'webrepl-inlined.html.gz'
 
 	putTemplate = Template("ampy --port ${port} put ${frompath} ${topath}")
@@ -23,11 +23,11 @@ try:
 		pass
 
 	try:
-		print('Uploading main.py implementing minimal webserver')
+		print('Uploading boot.py implementing minimal webserver')
 		sys.argv = putTemplate.substitute(
 			port=port,
-			frompath=mainPath,
-			topath=mainPath
+			frompath=bootPath,
+			topath=bootPath
 		).split()
 		cli.cli()
 	except SystemExit:
