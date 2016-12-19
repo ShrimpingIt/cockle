@@ -11,7 +11,7 @@ webrepl.start(password='shrimping')
 replpath = "webrepl-inlined.html.gz"
 
 s = socket.socket()
-ai = socket.getaddrinfo("0.0.0.0", 8080)
+ai = socket.getaddrinfo("0.0.0.0", 80)
 addr = ai[0][-1]
 
 s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
