@@ -1,20 +1,6 @@
-from machine import Pin
 from time import sleep
 from uos import urandom
-
-pins = [
-    Pin(16),
-    Pin(5),
-    Pin(4),
-    Pin(0),
-    Pin(2),
-    Pin(14),
-    Pin(12),
-    Pin(13),
-    Pin(15),
-    Pin(3),
-    Pin(1),
-]
+from cockle import pins
 
 dataPin = pins[1]
 clockPin = pins[2]
