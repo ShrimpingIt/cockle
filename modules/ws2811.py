@@ -1,12 +1,13 @@
 from neopixel import NeoPixel
-pixels=None
+num_pixels = 0
+pixels=[]
 
 def hue_to_rgb(h):
-    return hsb(h, 1.0, 1.0)
+    return hsb_to_rgb(h, 1.0, 1.0)
 
 def hsb_to_rgb(h, s, b):
     if s == 0.0: return b, b, b
-    i = int(h*6.0) # XXX assume int() truncates!
+    i = int(h*6.0)
     f = (h*6.0) - i
     p = b*(1.0 - s)
     q = b*(1.0 - s*f)
@@ -27,17 +28,32 @@ yellow = [255,255,0]
 purple = [255,0,255]
 teal =   [0,255,255]
 
+orange = [255,128,0]
+pink =   [255,64,64]
+
 white =  [255,255,255]
 black =  [0,0,0]
 
 def startPixels(data_pin, num_pixels):
     global pixels
     pixels = NeoPixel(data_pin, num_pixels)
-
-def setPixel(pixel_index, color, show=True):
-    pixels[pixel_index]=color
+    return pixels
+    
+def setPixel(index, color, show=True):
+    pixels[index]=color
     if show:
         pixels.write()
+    return pixels
 
 def showPixels():
     pixels.write()
+    return pixels
+
+def clearPixels(indexes=None, show=True):
+	if indexes==None:
+		indexes=range(num_pixels)
+	for index in indexes:
+		setPixel(index,black,False)
+	if show:
+		showPixels()
+	return pixels
