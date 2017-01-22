@@ -27,7 +27,7 @@ elif not os.path.exists(port):
 image_name = "esp8266-20161110-v1.8.6.bin"
 
 script_dir_path = os.path.dirname(os.path.realpath(__file__))
-firmware_image_path = script_dir_path + "/firmwares/" + image_name
+local_image_path = script_dir_path + "/firmwares/" + image_name
 
 remote_dir_url = "http://micropython.org/resources/firmware/"
 remote_image_url = remote_dir_url + image_name
