@@ -34,20 +34,18 @@ pink =   [255,64,64]
 white =  [255,255,255]
 black =  [0,0,0]
 
-def startPixels(data_pin, num_pixels):
-    global pixels
-    pixels = NeoPixel(data_pin, num_pixels)
-    return pixels
+def startPixels(pin, num):
+    global num_pixels, pixels
+    num_pixels = num
+    pixels = NeoPixel(pin, num)
     
 def setPixel(index, color, show=True):
     pixels[index]=color
     if show:
         pixels.write()
-    return pixels
 
 def showPixels():
     pixels.write()
-    return pixels
 
 def clearPixels(indexes=None, show=True):
 	if indexes==None:
@@ -56,4 +54,3 @@ def clearPixels(indexes=None, show=True):
 		setPixel(index,black,False)
 	if show:
 		showPixels()
-	return pixels
