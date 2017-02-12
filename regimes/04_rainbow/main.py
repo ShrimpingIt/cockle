@@ -3,14 +3,18 @@ from cockle import pins
 from ws2811 import *
 
 num_pixels = 8
+allIndexes = range(num_pixels)
 startPixels(pins[2], num_pixels)
+
 clearPixels()
 
+# values controlling rainbow
+hueChange=0.02
+hueSeparation=0.02
+changeDelay=0.02
+
+#hue of first pixel
 hueOffset = 0
-allIndexes = range(num_pixels)
-hueSeparation = 1 / num_pixels
-hueChange = hueSeparation
-changeDelay = 1
 
 def darken(rgb, proportion=0.05):
 	return [int(value * proportion) for value in rgb]
