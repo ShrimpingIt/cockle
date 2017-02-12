@@ -1,5 +1,6 @@
 from time import sleep
 from uos import urandom
+from machine import Pin
 from cockle import pins
 
 dataPin = pins[1]
@@ -16,8 +17,10 @@ clockPin.low()
 
 delay = 1
 
-numLights = 8
-backBytes = [0 for pos in range(numLights // 8)]
+def setNumLights(value):
+	global numLights, backBytes
+	numLights = value
+	backBytes = [0 for pos in range(numLights // 8)]
 
 def latch():
     latchPin.high()
@@ -87,3 +90,5 @@ def illuminateRandom():
 	global backBytes
 	backBytes=[ord(urandom(1)) for item in backBytes]
 	showBits()
+
+setNumLights(16)
