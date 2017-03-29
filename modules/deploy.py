@@ -1,36 +1,15 @@
-import sys
+import sys,os
 from string import Template
 from ampy import pyboard, cli
+import config
 
-try:
-	port = "/dev/ttyUSB0"
+script_dir_path = os.path.dirname(os.path.realpath(__file__))
 
-	moduleNames = ['cockle', 'ws2811']
-
-	putTemplate = Template("ampy --port ${port} put ${frompath} ${topath}")
-	resetTemplate = Template("ampy --port ${port} reset")
-
+def upload(moduleNames=('cockle', 'ws2811')):
+	print('Uploading Modules')
 	for moduleName in moduleNames:
 		moduleBaseName = moduleName + ".py"
-		try:
-			print('Uploading ' + moduleBaseName + "...")
-			sys.argv = putTemplate.substitute(
-				port=port,
-				frompath=moduleBaseName,
-				topath=moduleBaseName
-			).split()
-			cli.cli()
-		except SystemExit:
-			pass
+		config.putFile(script_dir_path + os.path.sep + moduleBaseName, moduleBaseName)
 
-	try:
-		print('Resetting Cockle')
-		sys.argv = resetTemplate.substitute(
-			port=port
-		).split()
-		cli.cli()
-	except SystemExit:
-		pass
-
-except pyboard.PyboardError:
-	print("Is " + port + "unplugged or already in use?")
+if __name__ == "__main__":
+	upload()
