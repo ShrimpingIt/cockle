@@ -1,4 +1,9 @@
-from serial.tools import miniterm
 import sys
-sys.argv = "miniterm.py --raw /dev/tty.SLAB_USBtoUART 115200".split()
+from serial.tools import miniterm
+import config
+
+minicomCommand = "serial.tools.miniterm --raw --encoding ascii ${port} ${baud}"
+minicomLookup = config.hardware_config()
+config.emulate_invocation(minicomCommand, minicomLookup)
 miniterm.main()
+
