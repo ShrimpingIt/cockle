@@ -20,10 +20,10 @@ s.listen(5)
 
 def accept_handler(sock):
 	res = sock.accept()
-	print("Handling")
+	#print("Handling")
 	client_s = res[0]
 	string_request = client_s.recv(2048).decode('utf-8')
-	print("Request:" + string_request)
+	#print("Request:" + string_request)
 	try:
 		request_line = string_request.split("\r\n")[0]    # only consider first line
 		request_line = request_line.split()     # separate by whitespace 
@@ -31,7 +31,7 @@ def accept_handler(sock):
 		header = ''
 		content = ''
 		if request_method == "GET" and "favicon" not in path:
-			print("GET "+ path)
+			#print("GET "+ path)
 			header += 'HTTP/1.1 200 OK\r\n'
 			header += 'Content-Type: text/html; charset=UTF-8\r\n'
 			header += 'Content-Encoding: gzip\r\n'
@@ -41,7 +41,7 @@ def accept_handler(sock):
 			header += '\r\n'
 
 			client_s.send(header)
-			print("Sent "+ header)
+			#print("Sent "+ header)
 			
 			with open(replpath, 'r') as f:
 				chunkCount = 0
@@ -49,10 +49,10 @@ def accept_handler(sock):
 					chunk = f.read(1024)
 					if chunk != '':
 						client_s.write(chunk)
-						print("Sent chunk " + str(chunkCount) + ":" + str(len(chunk)))
+						#print("Sent chunk " + str(chunkCount) + ":" + str(len(chunk)))
 						chunkCount = chunkCount + 1
 					else:
-						print("Last chunk sent")
+						#print("Last chunk sent")
 						break							
 	except Exception as e:
 		print("Exception", e)
