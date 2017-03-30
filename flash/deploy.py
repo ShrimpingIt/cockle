@@ -16,7 +16,10 @@ def erase():
 def flash():
 	config.emulate_invocation("esptool.py --port ${port} --baud ${baud} write_flash --flash_mode dio --flash_size=32m 0 ${local_image_path}", flash_config())
 	esptool.main()
-
-if __name__ == "__main__":
+	
+def run():	
 	erase()
 	flash()
+
+if __name__ == "__main__":
+	run()

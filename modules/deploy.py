@@ -11,5 +11,8 @@ def upload(moduleNames=('cockle', 'ws2811')):
 		moduleBaseName = moduleName + ".py"
 		config.putFile(script_dir_path + os.path.sep + moduleBaseName, moduleBaseName)
 
-if __name__ == "__main__":
+def run():
 	upload()
+
+if __name__ == "__main__":
+	run()
