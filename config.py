@@ -66,7 +66,6 @@ def putFile(frompath, topath):
 	except pyboard.PyboardError:
 		print("Is cockle unplugged or in use by another program?")
 
-
 def resetBoard():
 	from ampy import pyboard, cli
 	try:
