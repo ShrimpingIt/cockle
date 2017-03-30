@@ -33,14 +33,14 @@ def emulate_invocation(templateString, config):
 	)	
 
 def retrieval_config():
-	filesystem_lookup = create_filesystem_lookup()
+	filesystem_lookup = filesystem_config()
 	return dict(filesystem_lookup,
-		remote_image_url = remote_dir_url + filesystem_lookup["image_name"]		
+		remote_image_url = remote_dir_url + image_name		
 	)
 	
 def filesystem_config():
 	return dict(
-		local_image_path = script_dir_path + "/firmwares/" + image_name		
+		local_image_path = script_dir_path + "/flash/firmwares/" + image_name		
 	)
 
 def hardware_config():
