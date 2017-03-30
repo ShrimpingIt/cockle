@@ -12,6 +12,7 @@ clearPixels()
 hueChange=0.02
 hueSeparation=0.02
 changeDelay=0.02
+darkFactor=1/8.0
 
 #hue of first pixel
 hueOffset = 0
@@ -20,11 +21,14 @@ def darken(rgb, proportion=0.05):
 	return [int(value * proportion) for value in rgb]
 
 def rainbow():
+    colors = [hue_to_rgb(((i * hueSeparation) + hueOffset) % 1) for i in allIndexes]
+    for i in allIndexes:
+        setPixel(i, darken(colors[i], darkFactor), False)
+    showPixels()
+
+def progression():
     global hueOffset
     while True:
-        colors = [hue_to_rgb(((i * hueSeparation) + hueOffset) % 1) for i in allIndexes]
-        for i in allIndexes:
-            setPixel(i, colors[i], False)
-        showPixels()
+        rainbow()
         sleep(changeDelay)
         hueOffset = hueOffset + hueChange
