@@ -21,15 +21,15 @@ Attach your 8 LED strip so that...
 * If this doesn't connect wait a few moments and try again, the Cockle takes a few minutes to come up
 * Once the page loads click "Connect" at the top left
 * Enter the password "shrimping"
-* Enter ''' setPixel(1, red) ''' and you should see the first pixel on your strip light up red
-* Enter ''' setPixel(7, yellow) ''' and the last pixel should light up yellow
-* Enter ''' clearPixels() ''' and the all the LEDs should go off
+* Enter ```setPixel(1, red)``` and you should see the first pixel on your strip light up red
+* Enter ```setPixel(7, yellow)``` and the last pixel should light up yellow
+* Enter ```clearPixels()``` and the all the LEDs should go off
 
 
 ## Firing up a function
-* Enter ''' rainbox() ''' and your LED strip should light up like a rainbow!
-* Enter ''' def hue_to_rgb(h): '''
-* Enter ''' return hsb_to_rgb(h, 0.5, 0.5) '''
+* Enter ```rainbow()``` and your LED strip should light up like a rainbow!
+* Enter ```def hue_to_rgb(h):```
+* Enter ```return hsb_to_rgb(h, 0.5, 0.5)```
 * Press return three or four times until you get back to the >>> prompt
-* Enter ''' rainbow() ''' again.  You've overwritten the hue_to_rgb function and now you have a pastel rainbow
+* Enter ```rainbow()``` again.  You've overwritten the hue_to_rgb function and now you have a pastel rainbow
  
