@@ -1,12 +1,12 @@
-# Cockle Badge Tutorial
+# Cockle Tutorial
 
-An updated PDF version of this document could be available at http://shrimping.it/project/cockle/tutorial.pdf
+Get an updated version of this document at [http://shrimping.it/project/cockle/tutorial.pdf](http://shrimping.it/project/cockle/tutorial.pdf) . Text collaboratively maintained by @ShrimpingIt on github [here](https://github.com/ShrimpingIt/cockle/blob/master/tutorial/md)
 
 ## Equipment Provided
 
 In your packs you should have...
 
-* A Cockle (NodeMCU v2 board pre-installed with Micropython and our libraries)
+* A Cockle (NodeMCU v2 board pre-installed with Micropython, our libraries and startup scripts)
 * A WS2811 RGB LED display
 * A USB A-to-MicroB cable
 * A 3-way jumper cable with 2.54mm pitch female sockets
@@ -20,7 +20,7 @@ However, if you are configuring your own NodeMCUv2 as a Cockle or you want to wi
 ## Connecting the LED Display
 
 * You will need...
-	* The 8-LED Display (this is long and thin)
+	* The 8-LED Display
 	* The Jumper wires
 
 Look on the back of your LED display. It should have three pins going into it, and three pins going out. Find the end of the board with the following three connections.
@@ -73,7 +73,7 @@ If the Cockle has connected successfully, you should see three chevrons like thi
 
 * If the console has gone blank, but the chevrons don't appear try the following until they do
 	* try pressing the ```CTRL+C``` keys together to try and kill any sequence of steps which was already running. This should return you to the chevrons.
-	* visit Appendix A: Configuring your Cockle, to reset your Cockle with Micropython, all the modules and to add a startup script to your Cockle
+	* visit Appendix A: Configuring your Cockle, to reset your Cockle to 'factory' configuration
 
 ## Issuing commands
 
