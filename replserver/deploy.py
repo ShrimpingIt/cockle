@@ -12,7 +12,6 @@ def upload_server_files():
 
 	config.putFile(script_dir_path + os.path.sep + bootPath, bootPath)
 	config.putFile(script_dir_path + os.path.sep + zippedPath, zippedPath)
-	config.resetBoard()
 
 def run():
 	upload_server_files()
