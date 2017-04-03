@@ -36,7 +36,7 @@ def runInstall():
 def run():
 	runFlash()
 	runInstall()
-	print('All modules, replserver boot and application main files deployed. Now you can unplug the cockle \a\a\a')
+	print('All modules, replserver boot and application main files deployed. Now unplug the cockle to ensure it resets \a\a\a')
 
 if __name__ == "__main__":
 	run()
