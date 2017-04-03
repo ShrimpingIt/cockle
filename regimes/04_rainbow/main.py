@@ -10,7 +10,7 @@ clearPixels()
 
 # values controlling rainbow
 hueChange=0.02
-hueSeparation=0.02
+hueSeparation=1.0/8.0
 changeDelay=0.02
 darkFactor=1/8.0
 
