@@ -26,11 +26,9 @@ def guess_port_identifier():
 	return port
 
 def emulate_invocation(templateString, config):
-	sys.argv=(
-		Template(templateString)
-			.substitute(config)
-			.split()
-	)	
+	command = Template(templateString).substitute(config)
+	#print("Emulating '" + command + "'")
+	sys.argv=command.split()
 
 def retrieval_config():
 	filesystem_lookup = filesystem_config()
@@ -49,6 +47,14 @@ def hardware_config():
 		port=guess_port_identifier()
 	)
 	
+def ampyRelease():
+	from ampy import cli
+	if cli._board is not None:
+		try:
+			cli._board.close()
+		except:
+			pass
+	
 def putFile(frompath, topath):
 	from ampy import pyboard, cli
 	try:
@@ -63,8 +69,12 @@ def putFile(frompath, topath):
 			cli.cli()
 		except SystemExit:
 			pass
+		
 	except pyboard.PyboardError:
 		print("Is cockle unplugged or in use by another program?")
+	
+	ampyRelease()
+
 
 def resetBoard():
 	from ampy import pyboard, cli
@@ -78,3 +88,6 @@ def resetBoard():
 
 	except pyboard.PyboardError:
 		print("Is cockle unplugged or in use by another program?")
+	
+	ampyRelease()
+
