@@ -1,30 +1,42 @@
 #!/usr/bin/python
 mainPath = "./regimes/04_rainbow/main.py"
 
+from time import sleep
 from six.moves import input
 
-from config import putFile
+from config import putFile,resetBoard
 
 from flash.retrieve import run as flashRetrieve 
 from flash.deploy import run as flashDeploy 
 from modules.deploy import run as modulesDeploy
 from replserver.deploy import run as replserverDeploy 
 
-print("Retrieving latest flash image")
-flashRetrieve()
+def runFlash():
 
-print("Deploying flash image")
-flashDeploy()
+	print("Checking Micropython image retrieved")
+	flashRetrieve()
 
-input('Micropython uploaded. Press Cockle reset button, then press Enter')
+	print("Deploying Micropython image")
+	flashDeploy()
+	
+	sleep(4)
 
-print("Deploying Modules")
-modulesDeploy()
+def runInstall():
+	
+	print("Deploying Modules")
+	modulesDeploy()
 
-print("Deploying REPLServer")
-replserverDeploy()
+	print("Deploying REPLServer")
+	replserverDeploy()
 
-print("Deploying Application main.py file")
-putFile(mainPath, "main.py")
+	print("Deploying Application main.py file")
+	putFile(mainPath, "main.py")
 
-input('All modules, replserver boot and application main files deployed. Press Cockle reset button, then press Enter')
+
+def run():
+	runFlash()
+	runInstall()
+	print('All modules, replserver boot and application main files deployed. Now you can unplug the cockle \a\a\a')
+
+if __name__ == "__main__":
+	run()
