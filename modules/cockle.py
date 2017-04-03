@@ -17,6 +17,24 @@ pins = [
     Pin(1),
 ]
 
+
+def mac():		
+	from network import WLAN
+	nw = WLAN()
+	return nw.config('mac') # 5 bytes
+
+def showhex(bytearr):
+	return "".join(['%.2x' % b for b in bytearr])
+
+def identify(numBytes = None):
+	add = mac()
+	if numBytes == None:
+		numBytes = len(add)
+	return showhex(add[-numBytes:])
+		
+def suffix():
+	return identify(3)
+
 '''
 Efficient calculation for the logarithm (to the base 2) of val, rounded 
 up to the next whole number. It rounds down val, then unsets individual bits
