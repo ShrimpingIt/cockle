@@ -54,10 +54,6 @@ Use the jumper wires to attach to the Cockle as follows
 	* When the page appears click on Connect
 	* Type the password ```shrimping``` when challenged
 
-* Step 4: Start coding
-	* Try typing 
-
-
 ## Connecting to the Cockle via Serial
 
 A more technical way to connect uses a 'serial' or 'UART' connection over the USB wire. 
