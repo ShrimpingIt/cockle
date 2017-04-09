@@ -139,6 +139,13 @@ sqrt(4*4)
 
 * Install **python3** on your laptop. 
 	- Our config scripts run in _python3_ **and** _python2_. However, _micropython_ is a dialect of _python3_. Our advice; learn one language version
+* Install **pip3** on your laptop
+* Install **pyserial**, **adafruit-ampy** and **esptool** using **pip**. For example, linux and mac users would run commands in the console as follows...
+```
+sudo pip3 install pyserial
+sudo pip3 install adafruit-ampy
+sudo pip3 install esptool
+```
 * Get our scripts from the cockle repository ...
 	- ...download a [snapshot of our scripts](https://github.com/ShrimpingIt/cockle/archive/master.zip)
 	OR
