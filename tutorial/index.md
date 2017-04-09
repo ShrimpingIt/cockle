@@ -7,7 +7,7 @@ Get an updated version of this document at [http://shrimping.it/project/cockle/t
 In your packs you should have...
 
 * A Cockle (NodeMCU v2 board pre-installed with Micropython, our libraries and startup scripts)
-* A WS2811 RGB LED display
+* An 8-pixel WS2811 RGB LED display
 * A USB A-to-MicroB cable
 * A 3-way jumper cable with 2.54mm pitch female sockets
 
@@ -20,7 +20,7 @@ However, if you are configuring your own NodeMCUv2 as a Cockle or you want to wi
 ## Connecting the LED Display
 
 * You will need...
-	* The 8-LED Display
+	* The 8-pixel Display
 	* The Jumper wires
 
 Look on the back of your LED display. It should have three pins going into it, and three pins going out. Find the end of the board with the following three connections.
@@ -144,13 +144,13 @@ sqrt(4*4)
 	OR
 	- ...[install git](https://git-scm.com/downloads) on your laptop and check out [our repository](https://github.com/ShrimpingIt/cockle) if you are familiar with git and want to track future changes or contribute
 
-Download or unzip the repository contents to a location where you can find them. Launch a console and change to the directory containing the scripts. Now run...
+* Download or unzip the repository contents to a location where you can find them. Launch a console and change to the directory containing the scripts. Now run...
 
-```python deployall.py```
+	```python deployall.py```
+
+* Unplug and replug your Cockle to restart it.
 
 This should complete the process of downloading the Micropython image for your Cockle, uploading modules (libraries of code) to the Cockle, and optionally uploading a behaviour for the cockle to run on startup.
-
-Unplug and replug your Cockle to restart it.
 
 ## Appendix B: Configuring Laptop for Serial Connection
 
