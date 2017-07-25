@@ -6,7 +6,9 @@ from string import Template
 script_dir_path = os.path.dirname(os.path.realpath(__file__))
 
 baud = 115200
-image_name = "esp8266-20170108-v1.8.7.bin"
+#image_name = "esp8266-20170108-v1.8.7.bin"
+image_name = "esp8266-20170612-v1.9.1.bin"
+
 remote_dir_url = "http://micropython.org/resources/firmware/"
 
 def guess_port_identifier():
