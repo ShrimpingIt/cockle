@@ -4,6 +4,9 @@ except:
     import socket
     
 import os
+
+import gc
+gc.collect()
     
 import webrepl
 webrepl.start(password='shrimping')
@@ -46,6 +49,7 @@ def accept_handler(sock):
 			with open(replpath, 'r') as f:
 				chunkCount = 0
 				while True:
+					# TODO CH use buffer and readinto
 					chunk = f.read(1024)
 					if chunk != '':
 						client_s.write(chunk)
@@ -60,3 +64,5 @@ def accept_handler(sock):
 		client_s.close()
 
 s.setsockopt(socket.SOL_SOCKET, 20, accept_handler)
+
+gc.collect()
