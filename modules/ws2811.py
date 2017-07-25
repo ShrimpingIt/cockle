@@ -47,6 +47,10 @@ WS2811 = GRB
 
 def startPixels(pin, num, order=None):
     global num_pixels, pixels
+    if pin is None:
+        pin = Pin(4)  # NodeMCUv2 Pin D2
+    if num is None:
+        num = 8
     if order is not None:
         NeoPixel.ORDER = order
     num_pixels = num
@@ -71,14 +75,6 @@ def clearPixels(indexes=None, show=True, color=black):
     if show:
         showPixels()
 
-
-def config(pin=None, num=None, order=None):
-    if pin is None:
-        pin = Pin(4)  # NodeMCUv2 Pin D2
-    if num is None:
-        num = 8
-    startPixels(pin, num, order)
-    clearPixels()
-
 if __name__ == "__main__":
-    config()
+    startPixels()
+    clearPixels()
