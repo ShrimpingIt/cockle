@@ -1,6 +1,4 @@
-import sys,os
-from string import Template
-from ampy import pyboard, cli
+import os
 import config
 
 script_dir_path = os.path.dirname(os.path.realpath(__file__))
