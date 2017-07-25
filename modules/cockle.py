@@ -1,7 +1,9 @@
 from machine import Pin
 from os import urandom
 from math import floor
-from time import sleep_ms
+from utime import sleep_ms, ticks_ms, ticks_diff
+
+uplink = None
 
 pins = [
     Pin(16), #D0
@@ -16,6 +18,58 @@ pins = [
     Pin(3),  #D9
     Pin(1),  #D10
 ]
+
+downlink = WLAN(AP_IF)
+
+def connect(ssid,auth,timeout=16000):
+    from network import WLAN, STA_IF, AP_IF
+    global uplink
+    uplink = WLAN(STA_IF)
+    uplink.active(True)
+    uplink.connect(ssid, auth)
+    started= ticks_ms()
+    while True:
+        if uplink.isconnected():
+            return True
+        else:
+            if ticks_diff(ticks_ms(), started) < timeout:
+                sleep_ms(100)
+                continue
+            else:
+                return False
+
+def https_get(url, headers=None):
+    _, _, host, path = url.split('/', 3)
+    import usocket
+    import ussl
+    addr = usocket.getaddrinfo(host, 443)[0][-1]
+    s=usocket.socket()
+    s.connect(addr)
+    s.settimeout(1.0)
+    try:
+        s=ussl.wrap_socket(s)
+        s.write(b'GET /{} HTTP/1.1\r\nHost: {}\r\nUser-Agent: Cockle\r\n'.format(path, host))
+        if headers is not None:
+            s.write(headers)
+        s.write(b'\r\n')
+        buf = bytearray(128)
+        while True:
+            gc.collect()
+            try:
+                count = s.readinto(buf) # TODO use readline for headers including e.g. 'content-length: 2358' then after blank line, count bytes before close
+                if count > 0:
+                    if count < len(buf):
+                        sys.stdout.write(buf[:count])
+                    else:
+                        sys.stdout.write(buf)
+                    continue
+                else:
+                    print("Count not greater than 0")
+            except OSError as ose:
+                print(ose)
+            break
+    finally:
+        s.close()
 
 def mac():      
     from network import WLAN
