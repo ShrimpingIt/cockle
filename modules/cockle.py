@@ -19,8 +19,6 @@ pins = [
     Pin(1),  #D10
 ]
 
-downlink = WLAN(AP_IF)
-
 def connect(ssid,auth,timeout=16000):
     from network import WLAN, STA_IF, AP_IF
     global uplink

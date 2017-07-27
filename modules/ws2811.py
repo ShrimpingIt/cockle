@@ -45,7 +45,7 @@ PL9823 = RGB
 WS2811 = GRB
 
 
-def startPixels(pin, num, order=None):
+def startPixels(pin=None, num=None, order=None):
     global num_pixels, pixels
     if pin is None:
         pin = Pin(4)  # NodeMCUv2 Pin D2
