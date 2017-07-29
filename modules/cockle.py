@@ -5,16 +5,17 @@ from utime import sleep_ms, ticks_ms, ticks_diff
 
 uplink = None
 
+
 pins = [
     Pin(16), #D0
-    Pin(5),  #D1
+    Pin(5),  #D1 PWM
     Pin(4),  #D2
-    Pin(0),  #D3
-    Pin(2),  #D4
-    Pin(14), #D5
-    Pin(12), #D6
-    Pin(13), #D7
-    Pin(15), #D8
+    Pin(0),  #D3 PWM
+    Pin(2),  #D4 PWM
+    Pin(14), #D5 PWM
+    Pin(12), #D6 PWM
+    Pin(13), #D7 PWM
+    Pin(15), #D8 PWM
     Pin(3),  #D9
     Pin(1),  #D10
 ]
