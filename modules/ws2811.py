@@ -41,6 +41,7 @@ black = [0, 0, 0]
 
 RGB = (0, 1, 2, 3)
 GRB = (1, 0, 2, 3)
+RBG = (0, 2, 1, 3)
 PL9823 = RGB
 WS2811 = GRB
 
@@ -67,7 +68,7 @@ def showPixels():
     pixels.write()
 
 
-def clearPixels(indexes=None, show=True, color=black):
+def clearPixels(indexes=None, color=black, show=True):
     if indexes == None:
         indexes = range(num_pixels)
     for index in indexes:
