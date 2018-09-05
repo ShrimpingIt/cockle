@@ -2,10 +2,10 @@ from time import sleep
 from cockle import pins
 from ws2811 import *
 
-num_pixels = 8
-allIndexes = range(num_pixels)
-startPixels(pins[2], num_pixels)
 
+num_pixels = 8
+startPixels(num=8)
+allIndexes = range(num_pixels)
 clearPixels()
 
 # values controlling rainbow
